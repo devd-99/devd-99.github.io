@@ -11,9 +11,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js + Tailwind Portfolio Page",
+  title: "Devansh Purohit",
   description:
-    "Introducing Tailwind Portfolio Page, a versatile and stylish portfolio template built on the foundation of Tailwind CSS and Material Tailwind.",
+    "Portfolio",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
           data-site="YOUR_DOMAIN_HERE"
           src="https://api.nepcha.com/js/nepcha-analytics.js"
         ></script>
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/circular_straw_hat_icon.png" type="image/png" />
       </head>
       <body className={roboto.className}>
         <Layout>
