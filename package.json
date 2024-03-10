@@ -7,7 +7,7 @@
   "homepage": "https://devd-99.github.io",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && touch out/.nojekyll",
     "start": "next start",
     "lint": "next lint",
     "deploy": "gh-pages -d out"
