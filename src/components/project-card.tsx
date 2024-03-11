@@ -35,7 +35,6 @@ export function ProjectCard({ img, title, desc, github, live, tags }: ProjectCar
         >
           <Typography variant="h5" className="mb-2">
             {title}
-            {tags}
           </Typography>
         </a>
         <Typography className="mb-6 font-normal !text-gray-500">
@@ -45,9 +44,15 @@ export function ProjectCard({ img, title, desc, github, live, tags }: ProjectCar
         <Button color="gray" size="sm"  onClick={() => window.open(github, '_blank')}>
           Github
         </Button> 
-        <Button color="blue" size="sm"  onClick={() => window.open(live, '_blank')}>
+        {live!="" ?(
+          <Button color="blue" size="sm"  onClick={() => window.open(live, '_blank')}>
           Live
         </Button>
+        ) :<></>
+           
+
+        }
+       
         </div>
         
       </CardBody>
