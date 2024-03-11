@@ -41,7 +41,8 @@ const PROJECTS = [
     title: "Physics-Based Rendering - C++",
     desc: "Implemented Verlet, Euler, Euler Cromer methods of PBR on a cube defined manually using GLEW and GLUT libraries of the OpenGL framework.",
     github: "https://github.com/devd-99/pbr.git",
-    live: ["algorithms", "graphics"]
+    live: "",
+    tags: ["algorithms", "graphics"]
   },
   {
     img: "/image/niivue.png",
