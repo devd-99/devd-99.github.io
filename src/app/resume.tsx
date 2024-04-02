@@ -37,7 +37,7 @@ export function Resume() {
             experience in creating robust
             websites and applications.
           </Typography>
-          <a href="https://cvbucket-dnp9357.s3.amazonaws.com/Devansh_Purohit_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          <a href="https://drive.google.com/file/d/1b12zCiXerBfM86SXIZO6uRg2_Ur89or8/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
           <Button
             variant="text"
             className="flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600"
