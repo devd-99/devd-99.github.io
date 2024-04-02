@@ -6,11 +6,11 @@
   "license": "",
   "homepage": "https://devd-99.github.io",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && touch out/.nojekyll",
+    "dev": "next dev --experimental-https",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "gh-pages -d out"
+    "deploy": "touch out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",
