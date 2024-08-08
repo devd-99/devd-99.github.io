@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+// const niches = [...new Set(projects.map(project => project.data.niche))];
+console.log("niches");
+---
+
+<BaseLayout
+	title="My Work | Jeanine White"
+	description="Select a niche on the right to see selected projects"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="My Work"
+				tagline="Select a niche on the right to see selected projects"
+				align="start"
+			/>
+			<div class="content-layout">
+				<Grid variant="offset">
+					{
+						projects.map((project) => (
+							<li>
+								<PortfolioPreview project={project} />
+							</li>
+						))
+					}
+				</Grid>
+
+				<!-- <NicheSelector niches={niches} /> -->
+			</div>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content-layout {
+		display: flex;
+		gap: 2rem;
+	}
+
+	Grid {
+		flex: 1;
+	}
+
+	@media (max-width: 50em) {
+		.content-layout {
+			flex-direction: column;
+		}
+	}
+</style>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="About | Devansh Purohit" description="About Devansh Purohit">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagline="Thanks for stopping by! Read below to learn more about myself and my background."
+			>
+				<img
+					src="/image/about.jpg"
+					alt="Devansh Purohit"
+					class="about-image"
+				/>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						Top performer for 2 years at Dell Technologies, where I created an Internal Application and Server Management tool, and led vulnerability management and server migration teams. 
+						</p><br/><p>
+						Worked on a diverse set of teams during multiple internships, creating face-feature based desktop control software for people with disabilities, a VR tool for Laptop repair training, and a Server downtime prediction tool for Dell EMC servers. 
+					</p><br/><p>
+						Also went on to work at a Carbon Credit exchange startup to create their MVP, and worked in the Devops team to automate both Server Procurement using Ansible, and Outbound video testing using bash utilities. 
+					</p>
+					<br/>
+					<p>
+						I came to the United States for my Masters in Information Systems (8 CS courses from NYU Courant, 4 Technical Business courses from NYU Stern ) to get a great idea of how technology can be used to solve business problems across the board, and graduated with a GPA of 3.9. Created Deep Learning models under Prof. Yann LeCun's course, to predict 3-D objects' positions in the future, and also an MAE model to classify Basketball shots (Free Throws, 2PM, 3PM).
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="content">
+					<p>Masters of Science, Information Systems - New York University</p>
+					<p>Bachelors in Technology - Shiv Nadar University Institute of Eminence</p>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+
+	.about-image {
+		width: 100%;
+		max-height: 500px; // Adjust this value as needed
+		height: auto;
+		object-fit: cover;
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+</style>
