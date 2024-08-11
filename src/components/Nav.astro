@@ -10,6 +10,8 @@ const textLinks: { label: string; href: string }[] = [
 	{ label: 'About', href: '/about/' },
 ];
 
+const resumeButtonConf = { label: 'Resume', href: '/docs/resume.pdf' };
+
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
 	{ label: 'Twitter', href: 'https://twitter.com/me', icon: 'threads-logo' },
@@ -57,6 +59,12 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 				))
 			}
 		</ul>
+		
+	</noscript>
+	<noscript>
+		<a href={resumeButtonConf.href} class="link resume-button" target="_blank" rel="noopener noreferrer">
+			{resumeButtonConf.label}
+		</a>
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
@@ -360,6 +368,27 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	@media (forced-colors: active) {
 		.link.active {
 			color: SelectedItem;
+		}
+	}
+
+	.resume-button {
+		background-color: var(--accent-regular);
+		color: var(--accent-text-over);
+		padding: 0.5rem 1rem;
+		border-radius: 999rem;
+		transition: background-color var(--theme-transition);
+	}
+
+	.resume-button:hover,
+	.resume-button:focus {
+		background-color: var(--accent-dark);
+	}
+
+	@media (min-width: 50em) {
+		// ... existing styles ...
+
+		.resume-button {
+			margin-left: 1rem;
 		}
 	}
 </style>
