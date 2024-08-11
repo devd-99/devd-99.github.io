@@ -6,12 +6,12 @@ img_alt: A bright pink sheet of paper used to wrap flowers curves in front of ri
 description: |
   To-do application created using Next.js
 niches:
-  - Blockchain
-  - AI
+  - ios
+  - AppDev
 tags:
-  - Dev
-  - Branding
-  - Backend
+  - IOS Development
+  - Swift
+  - UI
 ---
 
 
