@@ -1,0 +1,98 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="table-of-contents">
+  <h2>Table of Contents</h2>
+  <ul>
+    {headings.map((heading) => (
+      <li class={`depth-${heading.depth}`}>
+        <a href={`#${heading.slug}`}>{heading.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .table-of-contents {
+    position:  sticky;
+    top: 2rem;
+    align-self: flex-start;
+    width: 25%;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding-right: 1rem;
+    border-right: 1px solid var(--gray-800);
+    text-align: left;
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: var(--gray-300);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--gray-0);
+  }
+
+  .depth-2 { padding-left: 0; }
+  .depth-3 { padding-left: 1rem; }
+  .depth-4 { padding-left: 2rem; }
+  .depth-5 { padding-left: 3rem; }
+  .depth-6 { padding-left: 4rem; }
+
+  @media (max-width: 72em) {
+    .table-of-contents {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+    const toc = document.getElementById('toc');
+  const tocTop = toc ? toc.offsetTop : 0;
+
+  function updateTocPosition() {
+    if (toc && window.pageYOffset >= tocTop) {
+      toc.classList.add('sticky');
+    } else if (toc) {
+      toc.classList.remove('sticky');
+    }
+  }
+
+  window.addEventListener('scroll', updateTocPosition);
+
+  const links = document.querySelectorAll('.table-of-contents a');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      if (targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>

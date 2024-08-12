@@ -7,6 +7,8 @@ import ContactCTA from '../../components/ContactCTA.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -24,10 +26,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
+
+// Function to determine the icon for a given link
+function getLinkIcon(url: string) {
+	if (url.includes("github.com")) return "github-logo";
+	if (url.includes("youtube.com")) return "youtube-logo";
+	return "live-external";
+}
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
+
+{ entry ? (<BaseLayout title={entry.data.title} description={entry.data.description}>
 	<div class="stack gap-20">
 		<div class="stack gap-15">
 			<header>
@@ -40,21 +50,49 @@ const { Content } = await entry.render();
 							</div>
 							<p class="description">{entry.data.description}</p>
 						</div>
+						<div  style = "align-items: center;">
+							
+							{entry.data.links && (
+								<div class="link-buttons">
+									{entry.data.links.map((link) => (
+										<a href={link} target="_blank" rel="noopener noreferrer" class="link-button">
+											<Icon icon={getLinkIcon(link)} />
+											{link.includes('github.com') ? 'GitHub' :
+											 link.includes('youtube.com') ? 'YouTube' : 'Visit'}
+										</a>
+									))}
+								</div>
+							)}
+
+							
+						</div>
 					</Hero>
 				</div>
 			</header>
 			<main class="wrapper">
-				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
-					<div class="content">
-						<Content />
+				<div class="content-wrapper">
+					<TableOfContents headings={headings}  />
+					<div class="stack gap-10 content">
+						{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+						<div class="content">
+							<Content />
+						</div>
 					</div>
 				</div>
 			</main>
 		</div>
 		<ContactCTA />
 	</div>
-</BaseLayout>
+	<ScrollToTop />
+</BaseLayout>) : (
+	<BaseLayout title="Not Found" description="The requested work entry was not found.">
+		<div class="wrapper">
+			<h1>404: Not Found</h1>
+			<p>The requested work entry could not be found.</p>
+			<a href="/work/">Back to Work</a>
+		</div>
+	</BaseLayout>
+)}
 
 <style>
 	header {
@@ -85,9 +123,32 @@ const { Content } = await entry.render();
 		max-width: 54ch;
 	}
 
+	.wrapper {
+		width: 100%;
+	}
+
+	.content-wrapper {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.table-of-contents {
+		flex: 0 0 25%;
+	}
+
 	.content {
-		max-width: 65ch;
-		margin-inline: auto;
+		flex: 1;
+		max-width: 75%;
+	}
+
+	@media (max-width: 72em) {
+		.content-wrapper {
+			flex-direction: column;
+		}
+
+		.content {
+			max-width: 100%;
+		}
 	}
 
 	.content > :global(* + *) {
@@ -148,4 +209,122 @@ const { Content } = await entry.render();
 			font-size: var(--text-2xl);
 		}
 	}
+
+	.table-of-contents {
+		position: sticky;
+		top: 2rem;
+		align-self: flex-start;
+		width: 25%;
+		max-height: calc(100vh - 4rem);
+		overflow-y: auto;
+		padding-right: 1rem;
+		border-right: 1px solid var(--gray-800);
+		text-align: left;
+	}
+
+	.table-of-contents.sticky {
+		position: fixed;
+		top: 2rem;
+	}
+
+	h2 {
+		font-size: var(--text-lg);
+		margin-bottom: 0.5rem;
+	}
+
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		margin-bottom: 0.5rem;
+	}
+
+	a {
+		color: var(--gray-300);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	a:hover {
+		color: var(--gray-0);
+	}
+
+	.depth-2 { padding-left: 0; }
+	.depth-3 { padding-left: 1rem; }
+	.depth-4 { padding-left: 2rem; }
+	.depth-5 { padding-left: 3rem; }
+	.depth-6 { padding-left: 4rem; }
+
+	@media (max-width: 72em) {
+		.table-of-contents {
+			display: none;
+		}
+	}
+
+	.content-wrapper {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.content {
+		flex: 1;
+		max-width: 75%;
+	}
+
+	@media (max-width: 72em) {
+		.content-wrapper {
+			flex-direction: column;
+		}
+
+		.content {
+			max-width: 100%;
+		}
+	}
+
+	.link-buttons {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1rem;
+	}
+
+	.link-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--gray-800);
+	color: var(--gray-200);
+	border-radius: 0.5rem;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+	}
+
+	.link-button:hover {
+	background-color: var(--gray-700);
+	}
+
+	.link-button svg {
+	width: 1.25em;
+	height: 1.25em;
+	}
 </style>
+
+<script>
+	// const tableOfContents = document.querySelector('.table-of-contents');
+	// const header = document.querySelector('header');
+
+	// if (tableOfContents && header) {
+	// 	const observer = new IntersectionObserver(([entry]) => {
+	// 		if (entry && entry.isIntersecting) {
+	// 			tableOfContents.classList.remove('sticky');
+	// 		} else {
+	// 			tableOfContents.classList.add('sticky');
+	// 		}
+	// 	});
+
+	// 	observer.observe(header);
+	// }
+</script>
