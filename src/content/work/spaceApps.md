@@ -16,7 +16,7 @@ links:
   - github.com/devd-99/NasaSpaceAppsChallenge-AR-App
 ---
 
-# AR HUD Application with Real-Time API Integration
+## AR HUD Application with Real-Time API Integration
 
 At the 2019 NASA SpaceApps challenge, I led the development of an innovative Augmented Reality (AR) Heads-Up Display (HUD) application. This mobile solution overlays real-time information from various APIs onto the user's view of the world through their device's camera. Here's a deep dive into the technical aspects of creating this cutting-edge application.
 
