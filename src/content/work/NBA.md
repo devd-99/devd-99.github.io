@@ -11,6 +11,8 @@ niches:
 tags:
   - Computer Vision
   - Deep Learning
+links:
+  - https://github.com/devd-99/nba_classification
 ---
 
 # NBA Action Prediction Using VideoMAE

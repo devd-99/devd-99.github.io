@@ -10,6 +10,8 @@ niches:
 tags:
   - Deep Learning
   - Computer Vision
+links:
+  - github.com/always-blue-DL-FA23/video-prediction
 ---
 ### Advancing Semantic Segmentation on Realistic Video with U-Net and SimVP
 

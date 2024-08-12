@@ -14,6 +14,8 @@ tags:
   - Computer Vision
   - Active Appearance Model
   - Gesture-Based Control
+links:
+  - https://github.com/devd-99/gstr
 ---
 # GSTR: 
 ### Advancing Human-Computer Interaction through Facial Gesture Recognition

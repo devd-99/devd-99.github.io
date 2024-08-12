@@ -50,21 +50,18 @@ function getLinkIcon(url: string) {
 							</div>
 							<p class="description">{entry.data.description}</p>
 						</div>
-						<div  style = "align-items: center;">
-							
+						<div style="display: flex; align-items: center; justify-content: center;">
 							{entry.data.links && (
 								<div class="link-buttons">
 									{entry.data.links.map((link) => (
-										<a href={link} target="_blank" rel="noopener noreferrer" class="link-button">
+										<a href={link.startsWith('http') ? link : 'https://' + link} target="_blank" rel="noopener noreferrer" class="link-button">
 											<Icon icon={getLinkIcon(link)} />
-											{link.includes('github.com') ? 'GitHub' :
-											 link.includes('youtube.com') ? 'YouTube' : 'Visit'}
-										</a>
+												{link.includes('github.com') ? 'GitHub' :
+												 link.includes('youtube.com') ? 'YouTube' : 'Visit'}
+											</a>
 									))}
 								</div>
 							)}
-
-							
 						</div>
 					</Hero>
 				</div>
