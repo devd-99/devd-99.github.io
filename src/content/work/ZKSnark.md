@@ -1,7 +1,7 @@
 ---
 title: ZKSnark on Solana
 publishDate: 2024-09-11 00:00:00
-img: /image/groth.jpg
+img: /image/groth.png
 img_alt: Utilizing Solana Programs from a Spotify Dupe PWA
 description: |
   Utilizing Solana Programs from a Spotify Dupe PWA
