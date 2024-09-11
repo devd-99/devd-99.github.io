@@ -1,6 +1,6 @@
 ---
 title: Spotify DApp on Solana
-publishDate: 2022-09-15 00:00:00
+publishDate: 2024-09-15 00:00:00
 img: /image/spotify.jpg
 img_alt: Utilizing Solana Programs from a Spotify Dupe PWA
 description: |
@@ -11,7 +11,7 @@ tags:
   - Blockchain
   - Rust
 links:
-  - github.com/devd-99/spotify-dapp
+  - github.com/devd-99/solana-spotify
 ---
 # Solana Spotify Project Overview
 
