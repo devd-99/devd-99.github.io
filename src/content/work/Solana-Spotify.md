@@ -1,6 +1,6 @@
 ---
 title: Spotify DApp on Solana
-publishDate: 2022-05-15 00:00:00
+publishDate: 2022-09-15 00:00:00
 img: /image/spotify.jpg
 img_alt: Utilizing Solana Programs from a Spotify Dupe PWA
 description: |
